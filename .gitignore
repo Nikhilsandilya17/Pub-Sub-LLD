@@ -1,0 +1,18 @@
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Java build artifacts
+*.class
+out/
+build/
+bin/
+
+# Gradle / Maven (if added later)
+.gradle/
+target/
