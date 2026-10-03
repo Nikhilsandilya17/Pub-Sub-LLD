@@ -7,7 +7,7 @@ import subscriber.Subscriber;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Broker broker = new Broker();
 
         Subscriber alice = new EmailSubscriber("alice@example.com");
@@ -24,6 +24,7 @@ public class Main {
         publisher.publish(new Message("Breaking: market hits record high", "NEWS_ALERT"));
         publisher.publish(new Message("Your order has shipped", "NOTIFICATION_ALERT"));
 
+        Thread.sleep(300);
         System.out.println("--- bob unsubscribes from NEWS_ALERT ---");
         broker.unsubscribe("NEWS_ALERT", bob);
 
@@ -31,5 +32,8 @@ public class Main {
 
         System.out.println("--- publishing to an event type with no subscribers ---");
         publisher.publish(new Message("Stock tip of the day", "STOCK_TIPS"));
+
+        Thread.sleep(300);
+        broker.shutdown();
     }
 }
